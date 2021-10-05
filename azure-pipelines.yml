@@ -1,14 +1,4 @@
 # ASP.NET
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Microsoft Azure Sponsorship(9e1432e9-4f07-4978-9a3d-f5cbf57b6de3)'
-    appType: 'webApp'
-    WebAppName: 'ma-app-migrate'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-# Build and test ASP.NET projects.
-# Add steps that publish symbols, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
 trigger:
 - master
@@ -39,3 +29,14 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Microsoft Azure Sponsorship(9e1432e9-4f07-4978-9a3d-f5cbf57b6de3)'
+    appType: 'webApp'
+    WebAppName: 'ma-app-migrate'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
